@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #1c1c1e;
+  --card-gradient: linear-gradient(145deg, #1f1f21 0%, #191919 100%);
+  --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.35);
+  --card-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 0 1px rgba(0, 113, 227, 0.22), 0 20px 56px rgba(0, 0, 0, 0.55);
+  --ghost-text: rgba(255, 255, 255, 0.04);
+  --watermark-text: rgba(255, 255, 255, 0.035);
+  --body-glow:
+    radial-gradient(ellipse 82% 44% at 50% -12%, rgba(245, 166, 35, 0.22), transparent 68%),
+    radial-gradient(ellipse 100% 55% at 50% -5%, rgba(0, 113, 227, 0.05), transparent 70%);
+  --text-primary: #f5f5f7;
+  --text-secondary: #6e6e73;
+  --accent: #0071e3;
+  --accent-soft: rgba(0, 113, 227, 0.3);
+  --watermark-glow: rgba(245, 166, 35, 0.22);
+  --section-divider: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent-soft) 12%,
+    var(--border) 35%,
+    transparent 65%
+  );
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --card-gradient: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.07);
+  --card-shadow-hover: 0 0 0 1px rgba(0, 113, 227, 0.25), 0 8px 32px rgba(0, 0, 0, 0.1);
+  --ghost-text: rgba(0, 0, 0, 0.04);
+  --watermark-text: rgba(0, 0, 0, 0.065);
+  --body-glow:
+    radial-gradient(ellipse 84% 40% at 50% -14%, rgba(214, 160, 62, 0.24), transparent 70%),
+    radial-gradient(ellipse 62% 30% at 50% 0%, rgba(156, 112, 26, 0.08), transparent 72%),
+    linear-gradient(180deg, rgba(255, 241, 205, 0.38) 0%, rgba(255, 255, 255, 0) 34%);
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent: #0071e3;
+  --accent-soft: rgba(0, 113, 227, 0.28);
+  --watermark-glow: rgba(156, 112, 26, 0.3);
+  --section-divider: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent-soft) 12%,
+    var(--border) 35%,
+    transparent 65%
+  );
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  background-image: var(--body-glow);
+  color: var(--text-primary);
+  font-family: -apple-system, "SF Pro Display", "SF Pro Text", Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gradient divider — replaces the flat borderTop on experience sections */
+.section-divider {
+  position: relative;
+}
+.section-divider::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--section-divider);
+  margin-bottom: 32px;
+}
+
+.content-veil {
+  position: relative;
+}
+
+.content-veil::before {
+  content: "";
+  position: absolute;
+  inset: -28px -36px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 32% 22%, var(--bg) 0%, rgba(10, 10, 10, 0.78) 36%, transparent 72%);
+  filter: blur(10px);
+}
+
+[data-theme="light"] .content-veil::before {
+  display: none;
+}
+
+/* Pulsing green dot for current role */
+@keyframes pulse-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(48, 209, 88, 0);
+  }
+}
+.pulse-dot {
+  animation: pulse-ring 2.5s ease-in-out infinite;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+@media (max-width: 720px) {
+  .stats-grid,
+  .project-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pillar-row,
+  .contact-row,
+  .in-progress-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .pillar-row [style*="justify-content: flex-end"] {
+    justify-content: flex-start !important;
+  }
+}
