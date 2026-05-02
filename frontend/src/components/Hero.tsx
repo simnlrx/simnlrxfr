@@ -16,22 +16,22 @@ export default function Hero() {
     >
       <style>{`
         .hero-portrait {
-          width: clamp(132px, 16vw, 184px);
+          width: clamp(156px, 17vw, 210px);
           aspect-ratio: 1;
         }
 
         .hero-portrait img {
-          width: 150%;
-          height: 150%;
-          object-fit: cover;
-          object-position: 50% 8%;
-          transform: translate(-4%, -10%);
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: 50% 50%;
+          transform: translate(-2%, 12%) scale(1.5);
           filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.35));
         }
 
         @media (max-height: 720px) {
           .hero-portrait {
-            width: clamp(112px, 14vw, 148px);
+            width: clamp(132px, 15vw, 164px);
           }
         }
       `}</style>
