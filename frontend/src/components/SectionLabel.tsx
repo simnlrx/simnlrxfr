@@ -50,6 +50,7 @@ export default function SectionLabel({ company, website, role, period, tagline, 
             target="_blank"
             rel="noreferrer"
             className="company-site-link"
+            data-analytics-label={`Site ${company}`}
             aria-label={`Site web de ${company}`}
             style={{
               marginBottom: "12px",

@@ -7,9 +7,28 @@ interface VisitSummary {
   today: number
   last24h: number
   last7d: number
+  clicks: number
   topPages: Array<{ path: string; count: number }>
+  topClicks: Array<{ label: string; target: string; count: number }>
   referrers: Array<{ referrer: string; count: number }>
-  recent: Array<{ id: string; path: string; referrer: string; timestamp: string }>
+  countries: Array<{ country: string; count: number }>
+  regions: Array<{ region: string; count: number }>
+  devices: Array<{ device: string; count: number }>
+  recent: Array<{
+    id: string
+    eventType?: "pageview" | "click"
+    path: string
+    referrer: string
+    label?: string
+    target?: string
+    country?: string
+    region?: string
+    city?: string
+    device?: string
+    timezone?: string
+    viewport?: string
+    timestamp: string
+  }>
 }
 
 function Metric({ label, value }: { label: string; value: number }) {
@@ -27,6 +46,15 @@ function Metric({ label, value }: { label: string; value: number }) {
       </p>
       <p style={{ marginTop: "14px", fontSize: "clamp(34px, 5vw, 56px)", fontWeight: 200 }}>{value}</p>
     </div>
+  )
+}
+
+function Row({ label, value }: { label: string; value: string | number }) {
+  return (
+    <p style={{ paddingBlock: "10px", borderBottom: "1px solid var(--border)", color: "var(--text-secondary)" }}>
+      <span>{label}</span>
+      <span style={{ float: "right", color: "var(--text-primary)", marginLeft: "18px" }}>{value}</span>
+    </p>
   )
 }
 
@@ -131,37 +159,68 @@ export default function StatsPage() {
 
         {summary && (
           <div style={{ marginTop: "52px" }}>
-            <div className="analytics-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px" }}>
+            <div className="analytics-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "12px" }}>
               <Metric label="Total" value={summary.total} />
               <Metric label="Aujourd'hui" value={summary.today} />
               <Metric label="24 h" value={summary.last24h} />
               <Metric label="7 jours" value={summary.last7d} />
+              <Metric label="Clics" value={summary.clicks} />
             </div>
 
             <div className="analytics-columns" style={{ marginTop: "28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
               <section>
                 <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Pages</h2>
                 {summary.topPages.map((item) => (
-                  <p key={item.path} style={{ paddingBlock: "10px", borderBottom: "1px solid var(--border)", color: "var(--text-secondary)" }}>
-                    {item.path} <span style={{ float: "right", color: "var(--text-primary)" }}>{item.count}</span>
-                  </p>
+                  <Row key={item.path} label={item.path} value={item.count} />
                 ))}
               </section>
               <section>
                 <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Sources</h2>
                 {summary.referrers.map((item) => (
-                  <p key={item.referrer} style={{ paddingBlock: "10px", borderBottom: "1px solid var(--border)", color: "var(--text-secondary)" }}>
-                    {item.referrer} <span style={{ float: "right", color: "var(--text-primary)" }}>{item.count}</span>
-                  </p>
+                  <Row key={item.referrer} label={item.referrer} value={item.count} />
+                ))}
+              </section>
+            </div>
+
+            <div className="analytics-columns" style={{ marginTop: "28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+              <section>
+                <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Clics</h2>
+                {summary.topClicks.map((item) => (
+                  <Row key={`${item.label}-${item.target}`} label={item.label} value={item.count} />
+                ))}
+              </section>
+              <section>
+                <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Devices</h2>
+                {summary.devices.map((item) => (
+                  <Row key={item.device} label={item.device} value={item.count} />
+                ))}
+              </section>
+            </div>
+
+            <div className="analytics-columns" style={{ marginTop: "28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+              <section>
+                <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Pays</h2>
+                {summary.countries.map((item) => (
+                  <Row key={item.country} label={item.country} value={item.count} />
+                ))}
+              </section>
+              <section>
+                <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Régions</h2>
+                {summary.regions.map((item) => (
+                  <Row key={item.region} label={item.region} value={item.count} />
                 ))}
               </section>
             </div>
 
             <section style={{ marginTop: "32px" }}>
-              <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Dernières visites</h2>
+              <h2 style={{ fontSize: "18px", marginBottom: "14px" }}>Derniers événements</h2>
               {summary.recent.map((visit) => (
                 <p key={visit.id} style={{ paddingBlock: "10px", borderBottom: "1px solid var(--border)", color: "var(--text-secondary)" }}>
-                  {new Date(visit.timestamp).toLocaleString("fr-FR")} · {visit.path}
+                  {new Date(visit.timestamp).toLocaleString("fr-FR")} · {visit.eventType === "click" ? "clic" : "visite"} ·{" "}
+                  {visit.label || visit.path}
+                  <span style={{ display: "block", marginTop: "4px", fontSize: "13px" }}>
+                    {[visit.country, visit.region, visit.city, visit.device, visit.viewport].filter(Boolean).join(" · ")}
+                  </span>
                 </p>
               ))}
             </section>

@@ -3,10 +3,21 @@ import path from "path"
 
 export interface VisitRecord {
   id: string
+  eventType: "pageview" | "click"
   path: string
   referrer: string
+  label?: string
+  target?: string
   userAgent: string
   language: string
+  timezone?: string
+  screen?: string
+  viewport?: string
+  platform?: string
+  country?: string
+  region?: string
+  city?: string
+  device?: string
   ipHash: string
   timestamp: string
 }
@@ -16,8 +27,13 @@ export interface VisitSummary {
   today: number
   last24h: number
   last7d: number
+  clicks: number
   topPages: Array<{ path: string; count: number }>
+  topClicks: Array<{ label: string; target: string; count: number }>
   referrers: Array<{ referrer: string; count: number }>
+  countries: Array<{ country: string; count: number }>
+  regions: Array<{ region: string; count: number }>
+  devices: Array<{ device: string; count: number }>
   recent: VisitRecord[]
 }
 
@@ -69,20 +85,39 @@ export async function addVisit(visit: VisitRecord) {
 
 export async function getVisitSummary(): Promise<VisitSummary> {
   const visits = await readVisits()
+  const pageviews = visits.filter((visit) => (visit.eventType ?? "pageview") === "pageview")
+  const clicks = visits.filter((visit) => visit.eventType === "click")
   const now = Date.now()
   const today = new Date().toISOString().slice(0, 10)
 
-  const last24h = visits.filter((visit) => now - Date.parse(visit.timestamp) <= 24 * 60 * 60 * 1000)
-  const last7d = visits.filter((visit) => now - Date.parse(visit.timestamp) <= 7 * 24 * 60 * 60 * 1000)
+  const last24h = pageviews.filter((visit) => now - Date.parse(visit.timestamp) <= 24 * 60 * 60 * 1000)
+  const last7d = pageviews.filter((visit) => now - Date.parse(visit.timestamp) <= 7 * 24 * 60 * 60 * 1000)
 
   return {
-    total: visits.length,
-    today: visits.filter((visit) => visit.timestamp.startsWith(today)).length,
+    total: pageviews.length,
+    today: pageviews.filter((visit) => visit.timestamp.startsWith(today)).length,
     last24h: last24h.length,
     last7d: last7d.length,
-    topPages: countBy(visits.map((visit) => visit.path)).map(({ key, count }) => ({ path: key, count })),
-    referrers: countBy(visits.map((visit) => visit.referrer || "Direct")).map(({ key, count }) => ({
+    clicks: clicks.length,
+    topPages: countBy(pageviews.map((visit) => visit.path)).map(({ key, count }) => ({ path: key, count })),
+    topClicks: countBy(clicks.map((visit) => `${visit.label || "Clic"}|${visit.target || ""}`)).map(({ key, count }) => {
+      const [label, target] = key.split("|")
+      return { label, target, count }
+    }),
+    referrers: countBy(pageviews.map((visit) => visit.referrer || "Direct")).map(({ key, count }) => ({
       referrer: key,
+      count,
+    })),
+    countries: countBy(pageviews.map((visit) => visit.country || "Inconnu")).map(({ key, count }) => ({
+      country: key,
+      count,
+    })),
+    regions: countBy(pageviews.map((visit) => visit.region || "Inconnu")).map(({ key, count }) => ({
+      region: key,
+      count,
+    })),
+    devices: countBy(pageviews.map((visit) => visit.device || "Inconnu")).map(({ key, count }) => ({
+      device: key,
       count,
     })),
     recent: visits.slice(-20).reverse(),

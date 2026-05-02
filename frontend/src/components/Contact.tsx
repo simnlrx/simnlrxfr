@@ -106,6 +106,7 @@ export default function Contact() {
                       transition: "color 0.2s ease",
                     }}
                     className="contact-link"
+                    data-analytics-label={`Contact ${item.label}`}
                   >
                     {item.value}
                   </a>
@@ -143,6 +144,7 @@ export default function Contact() {
                 transition: "opacity 0.2s ease, transform 0.2s ease",
               }}
               className="cta-btn"
+              data-analytics-label="CTA Me contacter"
             >
               {contact.cta}
               <span style={{ fontSize: "16px" }}>→</span>
@@ -154,6 +156,7 @@ export default function Contact() {
               rel="noreferrer"
               aria-label="LinkedIn de Simon Le Roux"
               className="linkedin-icon-link"
+              data-analytics-label="LinkedIn"
               style={{
                 width: "48px",
                 height: "48px",
@@ -188,7 +191,7 @@ export default function Contact() {
             }}
           >
             <span>© 2026 ✽ Simon Le Roux</span>
-            <span>v1.1.2</span>
+            <span>v1.2.0</span>
           </div>
         </FadeIn>
       </div>
