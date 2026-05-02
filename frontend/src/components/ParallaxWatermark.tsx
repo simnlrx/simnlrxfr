@@ -58,6 +58,7 @@ export default function ParallaxWatermark({
       }}
     >
       <motion.div
+        className="parallax-watermark"
         style={{
           x,
           y,

@@ -14,7 +14,7 @@
     radial-gradient(ellipse 82% 44% at 50% -12%, rgba(245, 166, 35, 0.22), transparent 68%),
     radial-gradient(ellipse 100% 55% at 50% -5%, rgba(0, 113, 227, 0.05), transparent 70%);
   --text-primary: #f5f5f7;
-  --text-secondary: #6e6e73;
+  --text-secondary: #9a9aa2;
   --accent: #0071e3;
   --accent-soft: rgba(0, 113, 227, 0.3);
   --watermark-glow: rgba(245, 166, 35, 0.22);
@@ -152,5 +152,16 @@ body {
 
   .pillar-row [style*="justify-content: flex-end"] {
     justify-content: flex-start !important;
+  }
+
+  .analytics-grid,
+  .analytics-columns {
+    grid-template-columns: 1fr !important;
+  }
+
+  .parallax-watermark {
+    font-size: clamp(84px, 23vw, 132px) !important;
+    letter-spacing: -0.02em !important;
+    max-width: 120vw;
   }
 }

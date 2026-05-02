@@ -13,6 +13,7 @@ export default function CD21() {
 
   return (
     <section
+      id="cd21"
       ref={sectionRef}
       className="section-divider"
       style={{

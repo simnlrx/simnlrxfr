@@ -5,6 +5,8 @@ dist/
 build/
 coverage/
 *.tsbuildinfo
+.analytics/
+frontend/.analytics/
 
 .env
 .env.*

@@ -139,6 +139,7 @@ export default function APRR() {
 
   return (
     <section
+      id="aprr"
       ref={sectionRef}
       className="section-divider"
       style={{
@@ -191,6 +192,7 @@ export default function APRR() {
         {/* Stats */}
         <FadeIn delay={0.1}>
           <div
+            className="stats-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",

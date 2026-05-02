@@ -10,6 +10,7 @@ export default function Formations() {
 
   return (
     <section
+      id="formations"
       ref={sectionRef}
       className="section-divider"
       style={{

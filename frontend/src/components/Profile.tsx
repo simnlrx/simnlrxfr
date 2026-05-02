@@ -6,6 +6,7 @@ import { profile } from "@/lib/data"
 export default function Profile() {
   return (
     <section
+      id="profil"
       className="section-divider"
       style={{
         paddingBlock: "96px",

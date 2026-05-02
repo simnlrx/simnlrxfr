@@ -213,7 +213,7 @@ export const formations = {
 
 export const contact = {
   sectionTitle: "Pensons sécurité ensemble.",
-  email: "contact@simnlrx.fr",
+  email: "lerouxsimon@icloud.com",
   phone: "+33 6 49 48 61 88",
   linkedin: "https://fr.linkedin.com/in/simnlrx",
   location: "Lyon",

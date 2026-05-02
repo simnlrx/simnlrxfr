@@ -13,6 +13,7 @@ export default function Almond() {
 
   return (
     <section
+      id="almond"
       ref={sectionRef}
       className="section-divider"
       style={{

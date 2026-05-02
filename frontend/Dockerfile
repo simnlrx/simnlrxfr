@@ -27,6 +27,7 @@ ENV NEXT_PUBLIC_OPEN_TO_WORK=$NEXT_PUBLIC_OPEN_TO_WORK
 ENV NEXT_PUBLIC_SHOW_PHONE=$NEXT_PUBLIC_SHOW_PHONE
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
+RUN mkdir -p /data/analytics && chown -R nextjs:nodejs /data
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static

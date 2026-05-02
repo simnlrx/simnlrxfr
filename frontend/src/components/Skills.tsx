@@ -10,6 +10,7 @@ export default function Skills() {
 
   return (
     <section
+      id="competences"
       ref={sectionRef}
       className="section-divider"
       style={{

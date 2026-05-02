@@ -10,6 +10,7 @@ export default function Hero() {
 
   return (
     <section
+      id="accueil"
       className="relative flex flex-col items-center justify-center"
       style={{ minHeight: "100svh", paddingInline: "24px" }}
     >

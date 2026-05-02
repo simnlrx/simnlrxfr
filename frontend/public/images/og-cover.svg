@@ -1,12 +1,19 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#0A0A0A"/>
-  <circle cx="600" cy="-60" r="360" fill="#F5A623" fill-opacity="0.2"/>
-  <circle cx="980" cy="120" r="320" fill="#0071E3" fill-opacity="0.09"/>
-  <text x="88" y="210" fill="#F5F5F7" font-family="Inter, Arial, sans-serif" font-size="84" font-weight="300" letter-spacing="-3">Simon Le Roux</text>
-  <text x="92" y="292" fill="#8E8E93" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="400">Ingénieur Cybersécurité</text>
-  <rect x="92" y="360" width="360" height="3" rx="1.5" fill="url(#accent)"/>
-  <text x="92" y="448" fill="#D1D1D6" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="300">Protégeons ensemble ce qui compte.</text>
+  <circle cx="545" cy="-42" r="355" fill="#F5A623" fill-opacity="0.22"/>
+  <circle cx="982" cy="120" r="320" fill="#0071E3" fill-opacity="0.12"/>
+  <circle cx="920" cy="292" r="154" fill="#FFFFFF" fill-opacity="0.96"/>
+  <circle cx="920" cy="292" r="154" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="2"/>
+  <image href="simon-le-roux-photo.png" x="746" y="100" width="340" height="340" preserveAspectRatio="xMidYMin slice" clip-path="url(#portrait)"/>
+  <text x="88" y="204" fill="#F5F5F7" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="300" letter-spacing="-3">Simon Le Roux</text>
+  <text x="92" y="286" fill="#A1A1A6" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="400">Ingénieur Cybersécurité</text>
+  <rect x="92" y="356" width="360" height="3" rx="1.5" fill="url(#accent)"/>
+  <text x="92" y="446" fill="#D1D1D6" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="300">Protégeons ensemble ce qui compte.</text>
+  <text x="92" y="522" fill="#86868B" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="400">simnlrx.fr</text>
   <defs>
+    <clipPath id="portrait">
+      <circle cx="920" cy="292" r="144"/>
+    </clipPath>
     <linearGradient id="accent" x1="92" y1="360" x2="452" y2="360" gradientUnits="userSpaceOnUse">
       <stop stop-color="#00FFB3"/>
       <stop offset="0.52" stop-color="#F5A623"/>
