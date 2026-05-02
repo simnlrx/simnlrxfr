@@ -78,7 +78,28 @@ export default function StatsPage() {
   }
 
   useEffect(() => {
-    void loadSummary()
+    let active = true
+
+    async function loadInitialSummary() {
+      const response = await fetch("/api/analytics/summary", { cache: "no-store" })
+      if (!active) return
+
+      if (!response.ok) {
+        setSummary(null)
+        setLoading(false)
+        return
+      }
+
+      const data = (await response.json()) as { summary: VisitSummary }
+      setSummary(data.summary)
+      setLoading(false)
+    }
+
+    void loadInitialSummary()
+
+    return () => {
+      active = false
+    }
   }, [])
 
   async function submit(event: FormEvent<HTMLFormElement>) {

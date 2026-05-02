@@ -7,7 +7,7 @@ export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
 export async function GET() {
-  const session = cookies().get(analyticsCookieName)?.value
+  const session = (await cookies()).get(analyticsCookieName)?.value
   if (!hasAnalyticsSession(session)) {
     return NextResponse.json({ ok: false }, { status: 401 })
   }

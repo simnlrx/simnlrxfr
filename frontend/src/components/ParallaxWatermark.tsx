@@ -4,7 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import type { CSSProperties, RefObject } from "react"
 
 interface ParallaxWatermarkProps {
-  targetRef: RefObject<HTMLElement>
+  targetRef: RefObject<HTMLElement | null>
   children: React.ReactNode
   align?: "left" | "center" | "right"
   left?: string
