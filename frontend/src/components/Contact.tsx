@@ -177,12 +177,18 @@ export default function Contact() {
           <div
             style={{
               marginTop: "80px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "16px",
+              flexWrap: "wrap",
               fontSize: "12px",
               color: "var(--text-secondary)",
               letterSpacing: "0.04em",
             }}
           >
             <span>© 2026 ✽ Simon Le Roux</span>
+            <span>v1.0.2</span>
           </div>
         </FadeIn>
       </div>
