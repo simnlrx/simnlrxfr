@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="16" fill="#0A0A0A"/>
+  <circle cx="32" cy="-3" r="30" fill="#F5A623" fill-opacity="0.34"/>
+  <circle cx="53" cy="13" r="27" fill="#0071E3" fill-opacity="0.22"/>
+  <path d="M17 45H47" stroke="url(#accent)" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="37" text-anchor="middle" fill="#F5F5F7" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing="0">SLR</text>
+  <defs>
+    <linearGradient id="accent" x1="17" y1="45" x2="47" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00FFB3"/>
+      <stop offset="0.52" stop-color="#F5A623"/>
+      <stop offset="1" stop-color="#C8202A"/>
+    </linearGradient>
+  </defs>
+</svg>
