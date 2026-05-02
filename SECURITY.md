@@ -13,9 +13,7 @@ Seule la derniere version publiee sur `main` est maintenue.
 
 Merci de ne pas ouvrir d'issue publique pour une vulnerabilite.
 
-Pour signaler un probleme de securite, envoyer un message a :
-
-**lerouxsimon@icloud.com**
+Pour signaler un probleme de securite, creer une issue dans ce repo.
 
 Inclure si possible :
 
