@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     canonical: "https://simnlrx.fr",
   },
   icons: {
-    icon: [{ url: "/favicon.svg?v=1.3.0", type: "image/svg+xml" }],
-    shortcut: ["/favicon.svg?v=1.3.0"],
+    icon: [{ url: "/favicon.svg?v=1.4.0", type: "image/svg+xml" }],
+    shortcut: ["/favicon.svg?v=1.4.0"],
   },
   robots: {
     index: true,
@@ -122,8 +122,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={inter.variable} data-theme="light">
       <head>
-        <link rel="icon" href="/favicon.svg?v=1.3.0" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/favicon.svg?v=1.3.0" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg?v=1.4.0" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg?v=1.4.0" type="image/svg+xml" />
         {/* Anti-flash: apply stored theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
