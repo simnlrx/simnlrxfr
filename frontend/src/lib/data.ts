@@ -187,6 +187,11 @@ export const formations = {
   ],
   achievements: [
     {
+      title: "ISO 27001 Lead Auditor",
+      detail: "Certification obtenue",
+      href: "/documents/iso-27001-lead-auditor.pdf",
+    },
+    {
       title: "TOEIC",
       detail: "Certification d'anglais professionnel",
     },
@@ -201,10 +206,6 @@ export const formations = {
   ],
   inProgress: [
     {
-      title: "ISO 27001 Lead Auditor",
-      detail: "Formation en cours",
-    },
-    {
       title: "Cybersécurité OT / IEC 62443",
       detail: "Formation en cours sur la sécurité des environnements industriels",
     },
@@ -218,4 +219,56 @@ export const contact = {
   linkedin: "https://fr.linkedin.com/in/simnlrx",
   location: "Lyon",
   cta: "Me contacter",
+}
+
+export const aPropos = {
+  label: "À propos",
+  title: "À propos de ce site.",
+  paragraphs: [
+    "Ce site est mon portfolio personnel. Il rassemble mon parcours, mes expériences professionnelles et mes certifications en cybersécurité.",
+    "Il est développé avec Next.js, React et TypeScript, mis en forme avec Tailwind CSS, puis déployé via Docker derrière un reverse proxy Nginx.",
+    "Les visites sont suivies de façon anonymisée à des fins statistiques uniquement, sans revente ni partage des données. Plus de détails dans les mentions légales.",
+  ],
+}
+
+export const mentionsLegales = {
+  label: "Mentions légales",
+  title: "Mentions légales.",
+  sections: [
+    {
+      heading: "Éditeur du site",
+      body: [
+        "Ce site est édité à titre personnel et non commercial par Simon Le Roux, basé à Lyon.",
+        `Contact : ${contact.email}`,
+        "Conformément à l'article 6-III de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, l'identité complète de l'éditeur est tenue à la disposition de toute personne qui en fait la demande auprès de l'hébergeur.",
+      ],
+    },
+    {
+      heading: "Directeur de la publication",
+      body: ["Simon Le Roux."],
+    },
+    {
+      heading: "Hébergement",
+      body: ["OVH SAS — 2 rue Kellermann, 59100 Roubaix, France — ovhcloud.com"],
+    },
+    {
+      heading: "Propriété intellectuelle",
+      body: [
+        "L'ensemble des contenus de ce site (textes, mises en page, éléments graphiques) est la propriété de Simon Le Roux, sauf mention contraire. Toute reproduction sans autorisation préalable est interdite.",
+      ],
+    },
+    {
+      heading: "Données personnelles et cookies",
+      body: [
+        "Le site collecte des statistiques de visite (pages consultées, clics, référent, informations navigateur et géographiques transmises par le proxy) à des fins de mesure d'audience. L'adresse IP brute n'est jamais stockée : seul un hash est conservé côté serveur.",
+        "Un cookie de session est utilisé uniquement pour l'authentification de la page /stats, réservée à l'éditeur du site.",
+      ],
+    },
+    {
+      heading: "Liens hypertextes",
+      body: [
+        "Ce site peut contenir des liens vers des sites tiers (LinkedIn, employeurs actuels ou passés). L'éditeur n'est pas responsable du contenu de ces sites externes.",
+      ],
+    },
+  ],
 }

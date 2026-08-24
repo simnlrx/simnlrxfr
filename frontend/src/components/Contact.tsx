@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import Link from "next/link"
 import FadeIn from "./FadeIn"
 import ParallaxWatermark from "./ParallaxWatermark"
 import { contact } from "@/lib/data"
@@ -191,13 +192,26 @@ export default function Contact() {
             }}
           >
             <span>© 2026 ✽ Simon Le Roux</span>
-            <span>v1.4.0</span>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <Link href="/a-propos" className="footer-link" style={{ color: "var(--text-secondary)", textDecoration: "none" }}>
+                À propos
+              </Link>
+              <Link
+                href="/mentions-legales"
+                className="footer-link"
+                style={{ color: "var(--text-secondary)", textDecoration: "none" }}
+              >
+                Mentions légales
+              </Link>
+            </div>
+            <span>v1.6.0</span>
           </div>
         </FadeIn>
       </div>
 
       <style>{`
         .contact-link:hover { color: var(--accent) !important; }
+        .footer-link:hover { color: var(--accent) !important; }
         .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
         .linkedin-icon-link:hover {
           color: var(--accent) !important;
