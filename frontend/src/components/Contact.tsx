@@ -191,7 +191,7 @@ export default function Contact() {
             }}
           >
             <span>© 2026 ✽ Simon Le Roux</span>
-            <span>v1.3.0</span>
+            <span>v1.4.0</span>
           </div>
         </FadeIn>
       </div>
