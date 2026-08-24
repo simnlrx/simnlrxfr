@@ -26,6 +26,10 @@ export default function Formations() {
           border-color: rgba(0, 113, 227, 0.25) !important;
         }
 
+        .achievement-link:hover {
+          color: var(--accent) !important;
+        }
+
         @media (max-width: 720px) {
           .formation-grid {
             grid-template-columns: 1fr !important;
@@ -183,7 +187,7 @@ export default function Formations() {
             style={{
               marginTop: "32px",
               display: "grid",
-              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
               gap: "1px",
               background: "var(--border)",
               borderRadius: "16px",
@@ -215,16 +219,42 @@ export default function Formations() {
                 >
                   {achievement.title}
                 </span>
-                <span
-                  style={{
-                    fontSize: "16px",
-                    lineHeight: 1.45,
-                    color: "var(--text-primary)",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {achievement.detail}
-                </span>
+                {achievement.href ? (
+                  <a
+                    href={achievement.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="achievement-link"
+                    data-analytics-label={`Certificat ${achievement.title}`}
+                    style={{
+                      fontSize: "16px",
+                      lineHeight: 1.45,
+                      color: "var(--text-primary)",
+                      letterSpacing: "-0.01em",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      transition: "color 0.2s ease",
+                    }}
+                  >
+                    {achievement.detail}
+                    <span aria-hidden style={{ fontSize: "14px" }}>
+                      ↗
+                    </span>
+                  </a>
+                ) : (
+                  <span
+                    style={{
+                      fontSize: "16px",
+                      lineHeight: 1.45,
+                      color: "var(--text-primary)",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {achievement.detail}
+                  </span>
+                )}
               </div>
             ))}
           </div>

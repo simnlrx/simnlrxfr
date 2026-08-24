@@ -99,6 +99,8 @@ curl http://localhost:4350
 ## Routes principales
 
 - `/` : page principale
+- `/a-propos` : a propos du site
+- `/mentions-legales` : mentions legales
 - `/stats` : statistiques de visites protegees par mot de passe
 - `/api/visits` : collecte des visites et clics
 - `/api/analytics/login` : authentification stats
@@ -107,6 +109,16 @@ curl http://localhost:4350
 - `/_not-found` : page 404 generee par Next.js
 
 Pour tester la 404 via NPM, utiliser n'importe quelle URL inexistante, par exemple `/page-inconnue`.
+
+## Certifications
+
+Le certificat ISO 27001 Lead Auditor est expose depuis `frontend/public/documents/`. Pour l'afficher, deposer le fichier PDF a cet emplacement exact :
+
+```
+frontend/public/documents/iso-27001-lead-auditor.pdf
+```
+
+Le lien "ISO 27001 Lead Auditor" de la section Formations pointe vers `/documents/iso-27001-lead-auditor.pdf`. En l'absence du fichier, Next.js renvoie nativement une erreur 404 sur ce chemin, sans logique additionnelle a maintenir.
 
 ## Analytics
 
